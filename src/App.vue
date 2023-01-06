@@ -1,12 +1,14 @@
 <template>
   <div>
     <h1>Vue Drumkit</h1>
-    <div class="keys"></div>
+    <div class="keys">
+      <Key v-for="(key, i) in keys" :sound="key" :key="i" />
+    </div>
   </div>
 </template>
 
 <script>
-
+import Key from './components/Key.vue';
 export default {
   name: 'App',
   data() {
@@ -61,6 +63,7 @@ export default {
     }
   },
   components: {
+    Key
   }
 }
 </script>

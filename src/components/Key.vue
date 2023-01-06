@@ -1,12 +1,27 @@
 <template>
-    <button :class="`key`">
+    <button :class="`key`" @click="play">
         {{ sound.letter }}
     </button>
 </template>
 <script>
 export default {
     name: 'key',
-    props: ['sound']
+    props: ['sound'],
+    data() {
+        return {
+            clicked: false,
+        }
+    },
+    methods: {
+        play() {
+            this.clicked = true;
+            new Audio(this.sound.audio).play();
+
+            setTimeout(() => {
+                this.clicked = false;
+            }, 200);
+        }
+    }
 }
 </script>
 <style>
