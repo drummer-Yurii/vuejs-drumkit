@@ -1,5 +1,5 @@
 <template>
-    <button :class="`key`" @click="play">
+    <button :class="`key ${clicked ? 'clicked' : ''}`" @click="play">
         {{ sound.letter }}
     </button>
 </template>
@@ -21,6 +21,13 @@ export default {
                 this.clicked = false;
             }, 200);
         }
+    },
+    mounted() {
+        document.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === this.sound.letter.toLowerCase()) {
+                this.play();
+            }
+        })
     }
 }
 </script>
